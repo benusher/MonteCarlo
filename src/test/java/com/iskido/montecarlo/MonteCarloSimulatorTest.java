@@ -1,5 +1,7 @@
 package com.iskido.montecarlo;
 
+import com.iskido.montecarlo.MonteCarloSimulator;
+import com.iskido.montecarlo.TaskDurationHistory;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 

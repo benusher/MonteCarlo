@@ -2,6 +2,7 @@ package com.iskido.montecarlo;
 
 import com.google.code.tempusfugit.temporal.Condition;
 import com.google.code.tempusfugit.temporal.WaitFor;
+import com.iskido.montecarlo.TaskDurationHistory;
 import org.junit.Test;
 
 import static com.google.code.tempusfugit.temporal.Duration.seconds;
