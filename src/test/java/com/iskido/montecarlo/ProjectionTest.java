@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class MonteCarloSimulatorTest {
+public class ProjectionTest {
 
     @Test
     public void predictsAPossibleTotalDuration() {
@@ -18,7 +18,7 @@ public class MonteCarloSimulatorTest {
         int numberOfTasks = 2;
         Duration expectedTotalDuration = standardDays(3);
 
-        Duration predictedTotalDuration = new MonteCarloSimulator(numberOfTasks, taskDurationHistory).run();
+        Duration predictedTotalDuration = new Projection(numberOfTasks, taskDurationHistory).run();
 
         assertThat(predictedTotalDuration, is(expectedTotalDuration));
     }
