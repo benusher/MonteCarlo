@@ -1,14 +1,20 @@
 package com.iskido.montecarlo;
 
+import org.joda.time.Duration;
+
+import java.util.Random;
+
 public class TaskDurationHistory {
 
-    private final int[] taskDuration;
+    private final Duration[] taskDurations;
+    private final Random random;
 
-    public TaskDurationHistory(int... taskDuration) {
-        this.taskDuration = taskDuration;
+    public TaskDurationHistory(Duration... taskDurations) {
+        this.taskDurations = taskDurations;
+        random = new Random();
     }
 
-    public int getTaskDuration() {
-        return taskDuration[0];
+    public Duration getTaskDuration() {
+        return taskDurations[random.nextInt(taskDurations.length)];
     }
 }

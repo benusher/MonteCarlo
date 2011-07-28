@@ -1,35 +1,35 @@
 package com.iskido.montecarlo;
 
-import com.google.code.tempusfugit.temporal.Condition;
-import com.google.code.tempusfugit.temporal.WaitFor;
-import com.iskido.montecarlo.TaskDurationHistory;
+import org.joda.time.Duration;
 import org.junit.Test;
 
-import static com.google.code.tempusfugit.temporal.Duration.seconds;
-import static com.google.code.tempusfugit.temporal.Timeout.timeout;
+import java.util.HashSet;
+
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.joda.time.Duration.standardDays;
+import static org.junit.Assert.assertThat;
 
 public class TaskDurationHistoryTest {
 
+    private static final int REASONABLE_DEGREE_OF_CONFIDENCE = 100;
+
     @Test
     public void getAHistoricalTaskDuration() throws Exception {
-        final int taskDuration1 = 1;
-        int taskDuration2 = 3;
-        final TaskDurationHistory taskDurationHistory = new TaskDurationHistory(taskDuration1, taskDuration2);
+        Duration duration1 = standardDays(1);
+        Duration duration2 = standardDays(2);
+        Duration duration3 = standardDays(3);
+        HashSet<Duration> expectedDurations = new HashSet<Duration>();
+        expectedDurations.add(duration1);
+        expectedDurations.add(duration2);
+        expectedDurations.add(duration3);
 
-        WaitFor.waitOrTimeout(new Condition() {
-            @Override
-            public boolean isSatisfied() {
-                if (taskDurationHistory.getTaskDuration() == taskDuration1) {
+        TaskDurationHistory taskDurationHistory = new TaskDurationHistory(duration1, duration2, duration3);
 
-                }
-                return false;  //To change body of implemented methods use File | Settings | File Templates.
-            }
-        }, timeout(seconds(1)));
+        HashSet<Duration> actualDurations = new HashSet<Duration>();
+        for (int i = 0; i < REASONABLE_DEGREE_OF_CONFIDENCE; i++) {
+            actualDurations.add(taskDurationHistory.getTaskDuration());
+        }
 
-        int actualTaskDuration = taskDurationHistory.getTaskDuration();
-
-        assertThat(actualTaskDuration, is(taskDuration1));
+        assertThat(actualDurations, is(expectedDurations));
     }
 }

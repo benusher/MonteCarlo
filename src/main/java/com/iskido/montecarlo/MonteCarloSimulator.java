@@ -1,26 +1,26 @@
 package com.iskido.montecarlo;
 
-import org.joda.time.LocalDate;
+import org.joda.time.Duration;
+
+import static org.joda.time.Duration.standardDays;
 
 public class MonteCarloSimulator {
 
     private final int numberOfTasks;
-    private final LocalDate startDate;
     private final TaskDurationHistory taskDurationHistory;
 
-    public MonteCarloSimulator(int numberOfTasks, LocalDate startDate, TaskDurationHistory taskDurationHistory) {
+    public MonteCarloSimulator(int numberOfTasks, TaskDurationHistory taskDurationHistory) {
         this.numberOfTasks = numberOfTasks;
-        this.startDate = startDate;
         this.taskDurationHistory = taskDurationHistory;
     }
 
-    public LocalDate run() {
-        int totalDurationInDays = 0;
+    public Duration run() {
+        Duration totalDuration = standardDays(0);
 
         for (int i = 0; i < numberOfTasks; i++) {
-            totalDurationInDays += taskDurationHistory.getTaskDuration();
+            totalDuration = totalDuration.plus(taskDurationHistory.getTaskDuration());
         }
 
-        return startDate.plusDays(totalDurationInDays);
+        return totalDuration;
     }
 }
