@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ProjectionTest {
+public class SimulationTest {
 
     @Test
     public void predictsAPossibleTotalDuration() {
@@ -18,7 +18,7 @@ public class ProjectionTest {
         int numberOfTasks = 2;
         Duration expectedTotalDuration = standardDays(3);
 
-        Duration predictedTotalDuration = new Projection(numberOfTasks, taskDurationHistory).run();
+        Duration predictedTotalDuration = new Simulation(numberOfTasks, taskDurationHistory).run();
 
         assertThat(predictedTotalDuration, is(expectedTotalDuration));
     }

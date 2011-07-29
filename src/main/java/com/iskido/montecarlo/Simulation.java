@@ -4,12 +4,12 @@ import org.joda.time.Duration;
 
 import static org.joda.time.Duration.standardDays;
 
-public class Projection {
+public class Simulation {
 
     private final int numberOfTasks;
     private final TaskDurationHistory taskDurationHistory;
 
-    public Projection(int numberOfTasks, TaskDurationHistory taskDurationHistory) {
+    public Simulation(int numberOfTasks, TaskDurationHistory taskDurationHistory) {
         this.numberOfTasks = numberOfTasks;
         this.taskDurationHistory = taskDurationHistory;
     }
