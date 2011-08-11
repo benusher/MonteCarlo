@@ -2,6 +2,11 @@ package com.iskido.montecarlo;
 
 import org.joda.time.Duration;
 
+import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
+import static org.apache.commons.lang.builder.ToStringStyle.SHORT_PREFIX_STYLE;
+
 public class Outcome {
 
     private final Duration duration;
@@ -14,16 +19,16 @@ public class Outcome {
 
     @Override
     public int hashCode() {
-        return org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode(this);
+        return reflectionHashCode(this);
     }
 
     @Override
     public boolean equals(Object o) {
-        return org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals(this, o);
+        return reflectionEquals(this, o);
     }
 
     @Override
     public String toString() {
-        return org.apache.commons.lang.builder.ToStringBuilder.reflectionToString(this, org.apache.commons.lang.builder.ToStringStyle.SHORT_PREFIX_STYLE);
+        return reflectionToString(this, SHORT_PREFIX_STYLE);
     }
 }
