@@ -1,13 +1,39 @@
 package com.iskido.montecarlo;
 
+import com.google.common.collect.HashMultiset;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.joda.time.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Outcomes {
 
-    public Outcomes(Outcome outcome) {
+    private final HashMultiset<Duration> durations;
+
+    public Outcomes() {
+        durations = HashMultiset.create();
+    }
+
+    @Deprecated // Use add(Duration) instead
+    public void add(Outcome outcome) {
+    }
+
+    public void add(Duration duration) {
+        durations.add(duration);
+    }
+
+    public List<Outcome> asList() {
+        ArrayList<Outcome> outcomes = new ArrayList<Outcome>();
+
+        for (Duration duration : durations.elementSet()) {
+            outcomes.add(new Outcome(duration, durations.count(duration)));
+        }
+
+        return outcomes;
     }
 
     @Override
