@@ -17,6 +17,14 @@ public class Outcome {
         this.frequency = frequency;
     }
 
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
     @Override
     public int hashCode() {
         return reflectionHashCode(this);
