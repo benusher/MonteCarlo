@@ -22,10 +22,6 @@ public class Outcomes {
         durations = HashMultiset.create();
     }
 
-    @Deprecated // Use add(Duration) instead
-    public void add(Outcome outcome) {
-    }
-
     public void add(Duration duration) {
         durations.add(duration);
     }
