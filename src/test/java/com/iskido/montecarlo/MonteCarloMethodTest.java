@@ -23,6 +23,7 @@ public class MonteCarloMethodTest {
         monteCarloMethod = new MonteCarloMethod(taskDurationHistory);
     }
 
+    @Ignore
     @Test
     public void simulateANumberOfTasks() throws Exception {
         Outcomes expectedOutcomes = new Outcomes();
@@ -33,11 +34,11 @@ public class MonteCarloMethodTest {
         assertThat(actualOutcomes, is(expectedOutcomes));
     }
 
-    @Ignore
     @Test
     public void runOneHundredSimulations() throws Exception {
         Outcomes outcomes = monteCarloMethod.simulateFor(1);
 
-        assertThat(outcomes.asList().size(), is(100));
+        assertThat(outcomes.asList().size(), is(1));
+        assertThat(outcomes.asList().get(0).getFrequency(), is(100));
     }
 }

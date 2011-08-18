@@ -11,7 +11,9 @@ public class MonteCarloMethod {
     public Outcomes simulateFor(int numberOfTasks) {
         Outcomes outcomes = new Outcomes();
 
-        outcomes.add(new Simulation(numberOfTasks, taskDurationHistory).run());
+        for (int i = 0; i < 100; i++) {
+            outcomes.add(new Simulation(numberOfTasks, taskDurationHistory).run());
+        }
 
         return outcomes;
     }
