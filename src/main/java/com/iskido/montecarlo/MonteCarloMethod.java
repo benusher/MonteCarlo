@@ -1,9 +1,13 @@
 package com.iskido.montecarlo;
 
+import org.joda.time.Duration;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class MonteCarloMethod {
+
+    private static final int NUMBER_OF_CHANNELS = 3;
 
     private final TaskDurationHistories taskDurationHistories;
 
@@ -14,11 +18,13 @@ public class MonteCarloMethod {
     public Outcomes simulateFor(Queue<Task> tasks) {
         Outcomes outcomes = new Outcomes();
 
-        LinkedList<Task> tasks1 = new LinkedList<Task>();
+        Queue<Task> simulationTasks = new LinkedList<Task>();
 
         for (int i = 0; i < 1000; i++) {
-            tasks1.addAll(tasks);
-            outcomes.add(new Simulation(tasks1, taskDurationHistories).run());
+            simulationTasks.addAll(tasks);
+            Simulation simulation = new Simulation(simulationTasks, taskDurationHistories);
+            Duration duration = simulation.run(Channels.create(NUMBER_OF_CHANNELS));
+            outcomes.add(duration);
         }
 
         return outcomes;

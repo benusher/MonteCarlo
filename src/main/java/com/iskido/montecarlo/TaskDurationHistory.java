@@ -17,13 +17,13 @@ public class TaskDurationHistory {
         random = new Random();
     }
 
-    public Duration getTaskDuration() {
-        return taskDurations.get(random.nextInt(taskDurations.size()));
-    }
-
     public void add(Duration duration, int count) {
         for (int i = 0; i < count; i++) {
             taskDurations.add(duration);
         }
+    }
+
+    public Duration getTaskDuration() {
+        return taskDurations.get(random.nextInt(taskDurations.size()));
     }
 }

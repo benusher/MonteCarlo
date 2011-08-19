@@ -1,10 +1,13 @@
 package com.iskido.montecarlo;
 
+import org.joda.time.Duration;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class TaskDurationHistories {
 
-    private final HashMap<Task,TaskDurationHistory> durationHistories;
+    private final Map<Task, TaskDurationHistory> durationHistories;
 
     public TaskDurationHistories() {
         durationHistories = new HashMap<Task, TaskDurationHistory>();
@@ -14,7 +17,7 @@ public class TaskDurationHistories {
         durationHistories.put(task, taskDurationHistory);
     }
 
-    public TaskDurationHistory getDurationHistoryFor(Task task) {
-        return durationHistories.get(task);
+    public Duration getDurationFor(Task task) {
+        return durationHistories.get(task).getTaskDuration();
     }
 }

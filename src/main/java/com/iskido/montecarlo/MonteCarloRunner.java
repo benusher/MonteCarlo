@@ -23,6 +23,10 @@ public class MonteCarloRunner {
 
         Outcomes outcomes = monteCarloMethod.simulateFor(tasks);
 
+        displayResultsAsCumulativeProbability(outcomes);
+    }
+
+    private static void displayResultsAsCumulativeProbability(Outcomes outcomes) {
         int total = 0;
         for (Outcome outcome : outcomes.asList()) {
             total += outcome.getFrequency();
