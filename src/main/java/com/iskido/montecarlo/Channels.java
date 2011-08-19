@@ -5,37 +5,37 @@ import java.util.Set;
 
 public class Channels {
 
-    private final Set<Channel> channels;
+    private final Set<WorkChannel> workChannels;
 
     public static Channels create(int numberOfChannels) {
-        Set<Channel> channels = new HashSet<Channel>();
+        Set<WorkChannel> workChannels = new HashSet<WorkChannel>();
 
         for (int i = 0; i < numberOfChannels; i++) {
-            channels.add(new Channel());
+            workChannels.add(new WorkChannel());
         }
 
-        return new Channels(channels);
+        return new Channels(workChannels);
     }
 
-    private Channels(Set<Channel> channels) {
-        this.channels = channels;
+    private Channels(Set<WorkChannel> workChannels) {
+        this.workChannels = workChannels;
     }
 
-    public Channel mostWorked() {
-        Channel mostWorked = channels.iterator().next();
-        for (Channel channel : channels) {
-            if (channel.getTotalDuration().isLongerThan(mostWorked.getTotalDuration())) {
-                mostWorked = channel;
+    public WorkChannel mostWorked() {
+        WorkChannel mostWorked = workChannels.iterator().next();
+        for (WorkChannel workChannel : workChannels) {
+            if (workChannel.getTotalTimeWorked().isLongerThan(mostWorked.getTotalTimeWorked())) {
+                mostWorked = workChannel;
             }
         }
         return mostWorked;
     }
 
-    public Channel leastWorked() {
-        Channel leastWorked = channels.iterator().next();
-        for (Channel channel : channels) {
-            if (channel.getTotalDuration().isShorterThan(leastWorked.getTotalDuration())) {
-                leastWorked = channel;
+    public WorkChannel leastWorked() {
+        WorkChannel leastWorked = workChannels.iterator().next();
+        for (WorkChannel workChannel : workChannels) {
+            if (workChannel.getTotalTimeWorked().isShorterThan(leastWorked.getTotalTimeWorked())) {
+                leastWorked = workChannel;
             }
         }
         return leastWorked;

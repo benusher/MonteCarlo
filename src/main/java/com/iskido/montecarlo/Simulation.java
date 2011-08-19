@@ -17,10 +17,10 @@ public class Simulation {
     public Duration run(final Channels channels) {
         while(tasks.peek() != null) {
             Duration historicalTaskDuration = taskDurationHistories.getDurationFor(tasks.remove());
-            Channel leastWorked = channels.leastWorked();
+            WorkChannel leastWorked = channels.leastWorked();
             leastWorked.plus(historicalTaskDuration);
         }
 
-        return channels.mostWorked().getTotalDuration();
+        return channels.mostWorked().getTotalTimeWorked();
     }
 }

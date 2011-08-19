@@ -4,15 +4,15 @@ import org.joda.time.Duration;
 
 import static org.joda.time.Duration.standardDays;
 
-public class Channel {
+public class WorkChannel {
 
     private Duration totalDuration;
 
-    public Channel() {
+    public WorkChannel() {
         this.totalDuration = standardDays(0);
     }
 
-    public Duration getTotalDuration() {
+    public Duration getTotalTimeWorked() {
         return totalDuration;
     }
 
