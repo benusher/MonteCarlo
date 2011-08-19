@@ -1,6 +1,7 @@
 package com.iskido.montecarlo;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 import static org.joda.time.Days.standardDaysIn;
 import static org.joda.time.Duration.standardDays;
@@ -18,14 +19,7 @@ public class MonteCarloRunner {
 
         MonteCarloMethod monteCarloMethod = new MonteCarloMethod(taskDurationHistories);
 
-        LinkedList<Task> tasks = new LinkedList<Task>();
-        tasks.add(Task.MEDIUM);
-        tasks.add(Task.MEDIUM);
-        tasks.add(Task.SMALL);
-        tasks.add(Task.SMALL);
-        tasks.add(Task.SMALL);
-        tasks.add(Task.SMALL);
-        tasks.add(Task.SMALL);
+        Queue<Task> tasks = tasks();
 
         Outcomes outcomes = monteCarloMethod.simulateFor(tasks);
 
@@ -34,6 +28,17 @@ public class MonteCarloRunner {
             total += outcome.getFrequency();
             System.out.println(standardDaysIn(outcome.getDuration().toPeriod()).getDays() + ", " + total/10);
         }
+    }
+
+    private static Queue<Task> tasks() {
+        LinkedList<Task> tasks = new LinkedList<Task>();
+
+        tasks.add(Task.MEDIUM);
+        tasks.add(Task.MEDIUM);
+        tasks.add(Task.MEDIUM);
+        tasks.add(Task.SMALL);
+
+        return tasks;
     }
 
     private static TaskDurationHistory smallTasks() {
