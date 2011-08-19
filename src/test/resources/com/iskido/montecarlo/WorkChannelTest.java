@@ -27,8 +27,8 @@ public class WorkChannelTest {
 
     @Test
     public void getTheTotalAmountOfTimeWorked() throws Exception {
-        workChannel.plus(standardDays(1));
-        workChannel.plus(standardDays(1));
+        workChannel.doMoreWork(standardDays(1));
+        workChannel.doMoreWork(standardDays(1));
 
         Duration totalTimeWorked = workChannel.getTotalTimeWorked();
 

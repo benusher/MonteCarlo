@@ -16,7 +16,7 @@ public class WorkChannel {
         return totalDuration;
     }
 
-    public void plus(Duration duration) {
+    public void doMoreWork(Duration duration) {
         totalDuration = totalDuration.plus(duration);
     }
 }

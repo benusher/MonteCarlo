@@ -23,7 +23,7 @@ public class MonteCarloMethod {
         for (int i = 0; i < 1000; i++) {
             simulationTasks.addAll(tasks);
             Simulation simulation = new Simulation(simulationTasks, taskDurationHistories);
-            Duration duration = simulation.run(Channels.create(NUMBER_OF_CHANNELS));
+            Duration duration = simulation.run(WorkChannels.create(NUMBER_OF_CHANNELS));
             outcomes.add(duration);
         }
 

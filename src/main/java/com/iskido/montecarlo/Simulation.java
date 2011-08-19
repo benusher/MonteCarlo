@@ -14,13 +14,13 @@ public class Simulation {
         this.taskDurationHistories = TaskDurationHistories;
     }
 
-    public Duration run(final Channels channels) {
+    public Duration run(final WorkChannels workChannels) {
         while(tasks.peek() != null) {
             Duration historicalTaskDuration = taskDurationHistories.getDurationFor(tasks.remove());
-            WorkChannel leastWorked = channels.leastWorked();
-            leastWorked.plus(historicalTaskDuration);
+            WorkChannel leastWorked = workChannels.leastWorkedChannel();
+            leastWorked.doMoreWork(historicalTaskDuration);
         }
 
-        return channels.mostWorked().getTotalTimeWorked();
+        return workChannels.mostWorkedChannel().getTotalTimeWorked();
     }
 }
