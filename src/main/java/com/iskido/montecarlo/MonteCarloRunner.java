@@ -30,7 +30,8 @@ public class MonteCarloRunner {
         int total = 0;
         for (Outcome outcome : outcomes.asList()) {
             total += outcome.getFrequency();
-            System.out.println(standardDaysIn(outcome.getDuration().toPeriod()).getDays() + ", " + total/10);
+            int days = standardDaysIn(outcome.getDuration().toPeriod()).getDays();
+            System.out.println(String.format("in %d days\t%d%%", days, total/10));
         }
     }
 
