@@ -7,15 +7,13 @@ import java.util.Queue;
 
 public class MonteCarloMethod {
 
-    private static final int NUMBER_OF_CHANNELS = 3;
-
     private final TaskDurationHistories taskDurationHistories;
 
     public MonteCarloMethod(TaskDurationHistories taskDurationHistories) {
         this.taskDurationHistories = taskDurationHistories;
     }
 
-    public Outcomes simulateFor(Queue<Task> tasks) {
+    public Outcomes simulateFor(final Queue<Task> tasks, final int numberOfChannels) {
         Outcomes outcomes = new Outcomes();
 
         Queue<Task> simulationTasks = new LinkedList<Task>();
@@ -23,7 +21,7 @@ public class MonteCarloMethod {
         for (int i = 0; i < 1000; i++) {
             simulationTasks.addAll(tasks);
             Simulation simulation = new Simulation(simulationTasks, taskDurationHistories);
-            Duration duration = simulation.run(WorkChannels.create(NUMBER_OF_CHANNELS));
+            Duration duration = simulation.run(WorkChannels.create(numberOfChannels));
             outcomes.add(duration);
         }
 
