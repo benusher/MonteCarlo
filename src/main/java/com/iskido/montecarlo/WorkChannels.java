@@ -23,21 +23,25 @@ public class WorkChannels {
 
     public WorkChannel mostWorkedChannel() {
         WorkChannel mostWorked = workChannels.iterator().next();
+
         for (WorkChannel workChannel : workChannels) {
-            if (workChannel.getTotalTimeWorked().isLongerThan(mostWorked.getTotalTimeWorked())) {
+            if (workChannel.durationWorked().isLongerThan(mostWorked.durationWorked())) {
                 mostWorked = workChannel;
             }
         }
+
         return mostWorked;
     }
 
     public WorkChannel leastWorkedChannel() {
         WorkChannel leastWorked = workChannels.iterator().next();
+
         for (WorkChannel workChannel : workChannels) {
-            if (workChannel.getTotalTimeWorked().isShorterThan(leastWorked.getTotalTimeWorked())) {
+            if (workChannel.durationWorked().isShorterThan(leastWorked.durationWorked())) {
                 leastWorked = workChannel;
             }
         }
+        
         return leastWorked;
     }
 }

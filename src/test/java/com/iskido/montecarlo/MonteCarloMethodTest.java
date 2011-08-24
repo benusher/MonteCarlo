@@ -2,12 +2,12 @@ package com.iskido.montecarlo;
 
 public class MonteCarloMethodTest {
 
-//    private TaskDurationHistory taskDurationHistory;
+//    private HistoricalTaskDuration taskDurationHistory;
 //    private MonteCarloMethod monteCarloMethod;
 //
 //    @Before
 //    public void setUp() throws Exception {
-//        taskDurationHistory = mock(TaskDurationHistory.class);
+//        taskDurationHistory = mock(HistoricalTaskDuration.class);
 //        when(taskDurationHistory.getTaskDuration()).thenReturn(standardDays(1));
 //
 //        monteCarloMethod = new MonteCarloMethod(taskDurationHistory);

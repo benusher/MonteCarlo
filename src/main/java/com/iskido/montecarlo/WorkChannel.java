@@ -12,7 +12,7 @@ public class WorkChannel {
         this.totalDuration = standardDays(0);
     }
 
-    public Duration getTotalTimeWorked() {
+    public Duration durationWorked() {
         return totalDuration;
     }
 

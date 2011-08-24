@@ -11,11 +11,11 @@ public class MonteCarloRunner {
     private static final int NUMBER_OF_CHANNELS = 2;
 
     public static void main(String[] args) {
-        TaskDurationHistories taskDurationHistories = new TaskDurationHistories();
-        taskDurationHistories.with(Task.SMALL, smallTasks());
-        taskDurationHistories.with(Task.MEDIUM, mediumTasks());
+        HistoricalTaskDurations historicalTaskDurations = new HistoricalTaskDurations();
+        historicalTaskDurations.with(Task.SMALL, smallTasks());
+        historicalTaskDurations.with(Task.MEDIUM, mediumTasks());
 
-        MonteCarloMethod monteCarloMethod = new MonteCarloMethod(taskDurationHistories);
+        MonteCarloMethod monteCarloMethod = new MonteCarloMethod(historicalTaskDurations);
 
         Outcomes outcomes = monteCarloMethod.simulateFor(tasks(), NUMBER_OF_CHANNELS);
 
@@ -44,8 +44,8 @@ public class MonteCarloRunner {
         }
     }
 
-    private static TaskDurationHistory smallTasks() {
-        TaskDurationHistory tasks = new TaskDurationHistory();
+    private static HistoricalTaskDuration smallTasks() {
+        HistoricalTaskDuration tasks = new HistoricalTaskDuration();
         tasks.add(standardDays(1), 14);
         tasks.add(standardDays(2), 24);
         tasks.add(standardDays(3), 6);
@@ -55,8 +55,8 @@ public class MonteCarloRunner {
         return tasks;
     }
 
-    private static TaskDurationHistory mediumTasks() {
-        TaskDurationHistory tasks = new TaskDurationHistory();
+    private static HistoricalTaskDuration mediumTasks() {
+        HistoricalTaskDuration tasks = new HistoricalTaskDuration();
         tasks.add(standardDays(1), 0);
         tasks.add(standardDays(2), 1);
         tasks.add(standardDays(3), 4);

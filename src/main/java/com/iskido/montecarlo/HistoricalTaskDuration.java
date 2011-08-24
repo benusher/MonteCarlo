@@ -7,18 +7,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class TaskDurationHistory {
+public class HistoricalTaskDuration {
 
     private final List<Duration> taskDurations;
     private final Random random;
 
-    public TaskDurationHistory(Duration... taskDurations) {
+    public HistoricalTaskDuration(Duration... taskDurations) {
         this.taskDurations = new ArrayList<Duration>(Arrays.asList(taskDurations));
         random = new Random();
     }
 
-    public void add(Duration duration, int count) {
-        for (int i = 0; i < count; i++) {
+    public void add(Duration duration, int numberOfOccurrences) {
+        for (int i = 0; i < numberOfOccurrences; i++) {
             taskDurations.add(duration);
         }
     }

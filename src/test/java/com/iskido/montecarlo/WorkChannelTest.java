@@ -20,7 +20,7 @@ public class WorkChannelTest {
 
     @Test
     public void aNewWorkChannelHasSpentNoTimeOnWork() throws Exception {
-        Duration totalTimeWorked = workChannel.getTotalTimeWorked();
+        Duration totalTimeWorked = workChannel.durationWorked();
 
         assertThat(totalTimeWorked, is(ZERO));
     }
@@ -30,7 +30,7 @@ public class WorkChannelTest {
         workChannel.doMoreWork(standardDays(1));
         workChannel.doMoreWork(standardDays(1));
 
-        Duration totalTimeWorked = workChannel.getTotalTimeWorked();
+        Duration totalTimeWorked = workChannel.durationWorked();
 
         assertThat(totalTimeWorked, is(standardDays(2)));
     }

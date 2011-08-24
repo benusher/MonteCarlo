@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.joda.time.Duration.standardDays;
 import static org.junit.Assert.assertThat;
 
-public class TaskDurationHistoryTest {
+public class HistoricalTaskDurationTest {
 
     private static final int REASONABLE_DEGREE_OF_CONFIDENCE = 100;
 
@@ -23,11 +23,11 @@ public class TaskDurationHistoryTest {
         expectedDurations.add(duration2);
         expectedDurations.add(duration3);
 
-        TaskDurationHistory taskDurationHistory = new TaskDurationHistory(duration1, duration2, duration3);
+        HistoricalTaskDuration historicalTaskDuration = new HistoricalTaskDuration(duration1, duration2, duration3);
 
         HashSet<Duration> actualDurations = new HashSet<Duration>();
         for (int i = 0; i < REASONABLE_DEGREE_OF_CONFIDENCE; i++) {
-            actualDurations.add(taskDurationHistory.getTaskDuration());
+            actualDurations.add(historicalTaskDuration.getTaskDuration());
         }
 
         assertThat(actualDurations, is(expectedDurations));

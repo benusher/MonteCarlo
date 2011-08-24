@@ -6,21 +6,21 @@ import java.util.Queue;
 
 public class Simulation {
 
-    private final TaskDurationHistories taskDurationHistories;
+    private final HistoricalTaskDurations historicalTaskDurations;
     private final Queue<Task> tasks;
 
-    public Simulation(Queue<Task> tasks, TaskDurationHistories TaskDurationHistories) {
+    public Simulation(Queue<Task> tasks, HistoricalTaskDurations historicalTaskDurations) {
         this.tasks = tasks;
-        this.taskDurationHistories = TaskDurationHistories;
+        this.historicalTaskDurations = historicalTaskDurations;
     }
 
     public Duration run(final WorkChannels workChannels) {
         while(tasks.peek() != null) {
-            Duration historicalTaskDuration = taskDurationHistories.getDurationFor(tasks.remove());
+            Duration historicalTaskDuration = historicalTaskDurations.getDurationFor(tasks.remove());
             WorkChannel leastWorked = workChannels.leastWorkedChannel();
             leastWorked.doMoreWork(historicalTaskDuration);
         }
 
-        return workChannels.mostWorkedChannel().getTotalTimeWorked();
+        return workChannels.mostWorkedChannel().durationWorked();
     }
 }
