@@ -34,11 +34,13 @@ public class MonteCarloRunner {
     }
 
     private static void displayResultsAsCumulativeProbability(Outcomes outcomes) {
-        int total = 0;
+        int totalFrequency = 0;
+
         for (Outcome outcome : outcomes.asList()) {
-            total += outcome.getFrequency();
+            totalFrequency += outcome.getFrequency();
             int days = standardDaysIn(outcome.getDuration().toPeriod()).getDays();
-            System.out.println(String.format("by day %d\t:\t%d%%", days, total/10));
+
+            System.out.println(String.format("by day %d\t:\t%d%%", days, totalFrequency/10));
         }
     }
 
