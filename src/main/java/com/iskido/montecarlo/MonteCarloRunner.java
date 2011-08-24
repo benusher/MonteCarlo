@@ -45,10 +45,10 @@ public class MonteCarloRunner {
     private static TaskDurationHistory smallTasks() {
         TaskDurationHistory tasks = new TaskDurationHistory();
         tasks.add(standardDays(1), 14);
-        tasks.add(standardDays(2), 19);
-        tasks.add(standardDays(3), 5);
+        tasks.add(standardDays(2), 24);
+        tasks.add(standardDays(3), 6);
         tasks.add(standardDays(4), 8);
-        tasks.add(standardDays(5), 2);
+        tasks.add(standardDays(5), 4);
         tasks.add(standardDays(6), 2);
         return tasks;
     }
@@ -58,10 +58,10 @@ public class MonteCarloRunner {
         tasks.add(standardDays(1), 0);
         tasks.add(standardDays(2), 1);
         tasks.add(standardDays(3), 4);
-        tasks.add(standardDays(4), 2);
-        tasks.add(standardDays(5), 1);
+        tasks.add(standardDays(4), 3);
+        tasks.add(standardDays(5), 2);
         tasks.add(standardDays(6), 0);
-        tasks.add(standardDays(7), 1);
+        tasks.add(standardDays(7), 3);
         tasks.add(standardDays(8), 1);
         tasks.add(standardDays(9), 1);
         tasks.add(standardDays(10), 2);
