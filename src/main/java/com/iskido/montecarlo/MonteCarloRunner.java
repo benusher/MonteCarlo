@@ -11,11 +11,7 @@ public class MonteCarloRunner {
     private static final int NUMBER_OF_CHANNELS = 2;
 
     public static void main(String[] args) {
-        HistoricalTaskDurations historicalTaskDurations = new HistoricalTaskDurations();
-        historicalTaskDurations.with(Task.SMALL, smallTasks());
-        historicalTaskDurations.with(Task.MEDIUM, mediumTasks());
-
-        MonteCarloMethod monteCarloMethod = new MonteCarloMethod(historicalTaskDurations);
+        MonteCarloMethod monteCarloMethod = new MonteCarloMethod(historicalTaskDurations());
 
         Outcomes outcomes = monteCarloMethod.simulateFor(tasks(), NUMBER_OF_CHANNELS);
 
@@ -33,15 +29,27 @@ public class MonteCarloRunner {
         return tasks;
     }
 
+    private static HistoricalTaskDurations historicalTaskDurations() {
+        HistoricalTaskDurations historicalTaskDurations = new HistoricalTaskDurations();
+        historicalTaskDurations.with(Task.SMALL, smallTasks());
+        historicalTaskDurations.with(Task.MEDIUM, mediumTasks());
+        
+        return historicalTaskDurations;
+    }
+
     private static void displayResultsAsCumulativeProbability(Outcomes outcomes) {
         int totalFrequency = 0;
 
         for (Outcome outcome : outcomes.asList()) {
             totalFrequency += outcome.getFrequency();
-            int days = standardDaysIn(outcome.getDuration().toPeriod()).getDays();
+            int days = outcomeDurationInDays(outcome);
 
             System.out.println(String.format("by day %d\t:\t%d%%", days, totalFrequency/10));
         }
+    }
+
+    private static int outcomeDurationInDays(Outcome outcome) {
+        return standardDaysIn(outcome.getDuration().toPeriod()).getDays();
     }
 
     private static HistoricalTaskDuration smallTasks() {
