@@ -8,7 +8,7 @@ import static org.joda.time.Duration.standardDays;
 
 public class MonteCarloRunner {
 
-    private static final int NUMBER_OF_CHANNELS = 2;
+    private static final int NUMBER_OF_CHANNELS = 3;
 
     public static void main(String[] args) {
         MonteCarloMethod monteCarloMethod = new MonteCarloMethod(historicalTaskDurations());
@@ -24,6 +24,14 @@ public class MonteCarloRunner {
         tasks.add(Task.MEDIUM);
         tasks.add(Task.MEDIUM);
         tasks.add(Task.MEDIUM);
+        tasks.add(Task.MEDIUM);
+        tasks.add(Task.MEDIUM);
+        tasks.add(Task.SMALL);
+        tasks.add(Task.SMALL);
+        tasks.add(Task.SMALL);
+        tasks.add(Task.SMALL);
+        tasks.add(Task.SMALL);
+        tasks.add(Task.SMALL);
         tasks.add(Task.SMALL);
 
         return tasks;
@@ -54,9 +62,9 @@ public class MonteCarloRunner {
 
     private static HistoricalTaskDuration smallTasks() {
         HistoricalTaskDuration tasks = new HistoricalTaskDuration();
-        tasks.add(standardDays(1), 14);
-        tasks.add(standardDays(2), 24);
-        tasks.add(standardDays(3), 6);
+        tasks.add(standardDays(1), 18);
+        tasks.add(standardDays(2), 25);
+        tasks.add(standardDays(3), 8);
         tasks.add(standardDays(4), 8);
         tasks.add(standardDays(5), 4);
         tasks.add(standardDays(6), 2);
@@ -66,13 +74,13 @@ public class MonteCarloRunner {
     private static HistoricalTaskDuration mediumTasks() {
         HistoricalTaskDuration tasks = new HistoricalTaskDuration();
         tasks.add(standardDays(1), 0);
-        tasks.add(standardDays(2), 1);
+        tasks.add(standardDays(2), 2);
         tasks.add(standardDays(3), 4);
-        tasks.add(standardDays(4), 3);
-        tasks.add(standardDays(5), 2);
+        tasks.add(standardDays(4), 5);
+        tasks.add(standardDays(5), 3);
         tasks.add(standardDays(6), 0);
         tasks.add(standardDays(7), 3);
-        tasks.add(standardDays(8), 1);
+        tasks.add(standardDays(8), 2);
         tasks.add(standardDays(9), 1);
         tasks.add(standardDays(10), 2);
         return tasks;
